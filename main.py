@@ -17,7 +17,11 @@ metadata = sieve.Metadata(
     metadata=metadata
 )
 def video_sound_effect(video: sieve.File, duration: float = 5.0) -> sieve.File:
-    if duration > 10.0:
+    '''
+    :param video: The video to generate a sound effect for.
+    :param duration: The duration of the sound effect in seconds. Must be less than 20 seconds.
+    '''
+    if duration > 20.0:
         raise ValueError("Duration must be less than 20 seconds")
     if duration < 0.0:
         raise ValueError("Duration must be greater than 0 seconds")
@@ -45,7 +49,7 @@ def video_sound_effect(video: sieve.File, duration: float = 5.0) -> sieve.File:
         print("asking model to describe the video...")
         cogvlm = sieve.function.get("sieve/cogvlm-chat")
         prompt = "describe what you might hear in this video in detail."
-        description = cogvlm.run(sieve.Image(path=middle_frame_path), prompt, vqa_mode=True)
+        description = cogvlm.run(sieve.Image(path=middle_frame_path), prompt)
 
         print("generating sound effect...")
         audiogen = sieve.function.get("sieve/audioldm")
