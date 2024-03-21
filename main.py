@@ -2,12 +2,13 @@ import sieve
 import tempfile
 
 metadata = sieve.Metadata(
+    title="Generate AI Sound Effects",
     description="Generate sound effects for stock videos using AI.",
     code_url="https://github.com/sieve-community/video-sound-effect",
     image=sieve.Image(
         path="sound-effect-icon.webp"
     ),
-    tags=["Video", "Sound"],
+    tags=["Video", "Sound", "Showcase"],
     readme=open("README.md", "r").read(),
 )
 
